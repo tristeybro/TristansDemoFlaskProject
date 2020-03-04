@@ -13,10 +13,6 @@ COPY . .
 
 # Run nginx
 RUN apt-get update && apt-get install -y nginx
-RUN which nginx
-# RUN nginx -c /app/nginx.conf
-
-# EXPOSE 80
 
 # Install and run supervisor
 RUN apt-get install -y supervisor
