@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: tristanflaskdemo
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            app: demo
+    template:
+        metadata:
+            labels:
+                app: demo
+        spec:
+            containers:
+            - name: demo-app
+              image: gcr.io/myflaskdemo/demo-app:1.0
+              ports:
+               - containerPort: 80    
+
