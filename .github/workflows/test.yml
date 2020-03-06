@@ -27,8 +27,7 @@ jobs:
         - name: Build Docker Image
           run: docker image build -t gcr.io/myflaskdemo/demo-app:1.0 .
 
-        - name: Setup GCloud With Service Account Credentials
-          uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
           with:
             service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
             service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
