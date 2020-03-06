@@ -32,7 +32,7 @@ jobs:
             export_default_credentials: true
 
         - name: Push To Google Cloud Container Registry
-          run: gcloud  autho configure-docker && docker push gcr.io/myflaskdemo/demo-app:1.0
+          run: gcloud  auth configure-docker && docker push gcr.io/myflaskdemo/demo-app:1.0
 
         - name: Deploy To GKE Cluster
           run: kubectl apply -f deployment.yaml
