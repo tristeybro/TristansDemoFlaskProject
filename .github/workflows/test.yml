@@ -29,10 +29,10 @@ jobs:
 
         - name: Setup GCloud With Service Account Credentials
           uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-            with:
-                service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
-                service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-                export_default_credentials: true
+          with:
+            service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+            service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+            export_default_credentials: true
 
         - name: Push To Google Cloud Container Registry
           run: gcloud  autho configure-docker && docker push gcr.io/myflaskdemo/demo-app:1.0
