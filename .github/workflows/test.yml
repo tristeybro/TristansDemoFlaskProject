@@ -26,7 +26,7 @@ jobs:
           run: export GITHUB_SHORT_HASH=$(git rev-parse --short "$GITHUB_SHA") && echo $GITHUB_SHORT_HASH
 
         - name: Create Kubernetes Deployment File
-          run: cat deployment.yaml.tmpl | sed 's/$VERSION/'"$GITHUB_SHORT_HASH"'/g' >> deployment.yaml && cat deployment.yaml
+          run: echo $GITHUB_SHORT_HASH && cat deployment.yaml.tmpl | sed 's/$VERSION/'"$GITHUB_SHORT_HASH"'/g' >> deployment.yaml && cat deployment.yaml
 
         - name: Build Docker Image
           run: docker image build -t gcr.io/myflaskdemo/demo-app:$GITHUB_SHORT_HASH .
