@@ -19,13 +19,11 @@ jobs:
     build_and_deploy:
         needs: [test]
         runs-on: ubuntu-latest
-        env:
-            GITHUB_SHORT_HASH: $(git rev-parse --short "$GITHUB_SHA")
         steps:
         - uses: actions/checkout@v2
 
-        - name: Get Short Github Commit Hash.
-          run: echo $GITHUB_SHORT_HASH
+        - name: Get Short Github Commit Hash And Save As Environment Variable
+          run: export GITHUB_SHORT_HASH=$(git rev-parse --short "$GITHUB_SHA") && echo '::set-env name=GITHUB_SHORT_HASH::'"$GITHUB_SHORT_HASH"
 
         - name: Create Kubernetes Deployment File
           run: echo $GITHUB_SHORT_HASH && cat deployment.yaml.tmpl | sed 's/$VERSION/'"$GITHUB_SHORT_HASH"'/g' >> deployment.yaml && cat deployment.yaml
