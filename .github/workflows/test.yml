@@ -35,7 +35,7 @@ jobs:
           run: gcloud auth configure-docker && docker push gcr.io/myflaskdemo/demo-app:1.0
         
         - name: Configure Kubectl With Cluster Credentials From GKE
-          run: gcloud container clusters get-credentials demo-app-cluster --region us-central1
+          run: gcloud container clusters get-credentials demo-app-cluster --region us-central1 --project myflaskdemo
 
         - name: Deploy To GKE Cluster
           run: kubectl apply -f deployment.yaml
