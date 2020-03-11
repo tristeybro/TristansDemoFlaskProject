@@ -45,3 +45,8 @@ jobs:
 
         - name: Deploy To GKE Cluster
           run: kubectl apply -f deployment.yaml
+
+        - name: Set Up Load Balancer
+          run: kubectl apply -f load_balancer_service.yaml
+
+
