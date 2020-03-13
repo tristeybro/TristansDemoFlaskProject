@@ -15,7 +15,7 @@ COPY . .
 RUN apt-get update && apt-get install -y nodejs && apt-get install -y curl && curl -L https://npmjs.org/install.sh | sh
 
 # Build React Front End
-RUN cd my-react-app && npm run build && cd ..
+RUN cd my-react-app && npm install && npm run build && cd ..
 
 # Run nginx
 RUN apt-get update && apt-get install -y nginx
